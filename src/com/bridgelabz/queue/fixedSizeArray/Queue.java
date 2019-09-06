@@ -10,33 +10,46 @@ public class Queue {
 		queue[rear] = data;
 		rear = (rear + 1) % 5;
 		size = size + 1;
+
+		if (isFull()) {
+			System.out.println("Queue is full removing first value");
+		}
 	}
 
 	public int deQueue() {
 		int data = queue[front];
-		front = (front + 1) % 5;
-		size = size - 1;
+		if (!isEmpty()) {
+
+			front = (front + 1) % 5;
+			size = size - 1;
+
+		} else {
+			System.out.println("Queue is empty nothing to delete");
+		}
 
 		return data;
+
 	}
 
 	public void show() {
 		System.out.print("Element : ");
 		int length = queue.length;
 		int count = rear;
-		while (length > 0) {
-			System.out.print(queue[count] + " ");
-			count++;
-			if (count == 5) {
-				count = 0;
+		if (isFull()) {
+			while (length > 0) {
+				System.out.print(queue[count] + " ");
+				count++;
+				if (count == 5) {
+					count = 0;
+				}
+				length--;
 			}
-			length--;
+		} else {
+			for (int i = 0; i < size; i++) {
+				System.out.print(queue[(front + i) % 5] + " ");
+			}
 		}
-		System.out.println();
-		System.out.println();
-		for (int num : queue) {
-			System.out.print(num + " ");
-		}
+
 	}
 
 	public int getSize() {
