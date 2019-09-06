@@ -41,6 +41,27 @@ public class LinkedList {
 			n.next=new_node;
 		}
 	}
+	public void deleteAtStart() {
+		Node n=head;
+		head=head.next;
+		System.out.println("Node deleted is: "+n.data);
+		n=null;
+	}
+	public void deleteAt(int index) {
+		if(index==0) {
+			head=head.next;
+		}else {
+			Node n=head;
+			Node n1=null;
+			for (int i = 0; i < index-1; i++) {
+				n=n.next;
+			}
+			n1=n.next;
+			n.next=n1.next;
+			System.out.println("Node deleted is: "+n1.data);
+			n1=null;
+		}
+	}
 
 	public void show() {
 		Node n = head;
