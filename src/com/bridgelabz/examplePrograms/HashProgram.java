@@ -1,4 +1,4 @@
-package com.bridgelabz.hashing;
+package com.bridgelabz.examplePrograms;
 
 import java.util.Arrays;
 
