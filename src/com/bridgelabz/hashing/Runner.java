@@ -11,11 +11,12 @@ public class Runner {
 		map.add(17, 17);
 		map.add(96, 96);
 		map.add(25, 25);
+		map.add(27, 27);
 		
-		System.out.println(map.size());
-		System.out.println(map.remove(99));
-		System.out.println(map.remove(12));
-		System.out.println(map.size());
+//		System.out.println(map.size());
+//		
+//		System.out.println(map.size());
+//		System.out.println(map.get(77));
 		//System.out.println(map.isEmpty());
 		map.show();
 	}

@@ -9,12 +9,12 @@ public class Map<K, V> {
 	// capacity of array list
 	public int arrCapacity;
 	// size of array list
-	public int arrSize;
+	public int size;
 
 	public Map() {
 		chainArray = new ArrayList<>();
 		arrCapacity = 11;
-		arrSize = 0;
+		size = 0;
 
 		for (int i = 0; i < arrCapacity; i++) {
 			chainArray.add(null);
@@ -22,16 +22,16 @@ public class Map<K, V> {
 	}
 
 	public int size() {
-		return arrSize;
+		return size;
 	}
 
 	public boolean isEmpty() {
-		return arrSize == 0;
+		return size == 0;
 	}
 
 	public int hashIndex(K key) {
-		int hashCod = key.hashCode();
-		return hashCod % arrCapacity;
+		int hashCod = (int) key;
+		return hashCod % 11;
 	}
 
 	// Returns value for a key
@@ -65,18 +65,18 @@ public class Map<K, V> {
 			head = head.next;
 		}
 		// Insert key in chain
-		arrSize++;
+		size++;
 		head = chainArray.get(hashIndex);
 		HashNode<K, V> newNode = new HashNode<K, V>(key, value);
 		newNode.next = head;
 		chainArray.set(hashIndex, newNode);
 		// If load factor goes beyond threshold, then
 		// double hash table size
-		if ((1.0 * arrSize) / arrCapacity >= 0.7) {
+		if ((1.0 * size) / arrCapacity >= 0.7) {
 			ArrayList<HashNode<K, V>> temp = chainArray;
 			chainArray = new ArrayList<>();
 			arrCapacity = 2 * arrCapacity;
-			arrSize = 0;
+			size = 0;
 			for (int i = 0; i < arrCapacity; i++)
 				chainArray.add(null);
 
@@ -114,7 +114,7 @@ public class Map<K, V> {
 			return null;
 
 		// Reduce size
-		arrSize--;
+		size--;
 
 		// Remove key
 		if (prev != null)
@@ -126,6 +126,21 @@ public class Map<K, V> {
 	}
 
 	public void show() {
+		for (int i = 0; i < chainArray.size(); i++) {
+
+			System.out.println("array index : " + i);
+			HashNode<K, V> head = chainArray.get(i);
+			while (head != null) {
+
+				System.out.println(head.value);
+
+				head = head.next;
+
+			}
+
+		}
+
+		// Get head of chain
 
 	}
 

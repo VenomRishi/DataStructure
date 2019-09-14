@@ -1,15 +1,15 @@
 package com.bridgelabz.linkedlist;
 
-public class LinkedList {
-	Node head;
+public class LinkedList<T> {
+	Node<T> head;
 
-	public void insert(int data) {
-		Node new_node = new Node();
+	public void insert(T data) {
+		Node<T> new_node = new Node<T>();
 		new_node.data = data;
 		if (head == null) {
 			head = new_node;
 		} else {
-			Node n = head;
+			Node<T> n = head;
 			while (n.next != null) {
 				n = n.next;
 			}
@@ -17,54 +17,56 @@ public class LinkedList {
 		}
 	}
 
-	public void insertAtStart(int data) {
-		Node new_node = new Node();
+	public void insertAtStart(T data) {
+		Node<T> new_node = new Node<T>();
 		new_node.data = data;
 		new_node.next = null;
 		new_node.next = head;
 		head = new_node;
 	}
 
-	public void insertAt(int index, int data) {
-		Node new_node = new Node();
+	public void insertAt(int index, T data) {
+		Node<T> new_node = new Node<T>();
 		new_node.data = data;
 		new_node.next = null;
-		
-		if(index==0) {
+
+		if (index == 0) {
 			insertAtStart(data);
-		}else {
-			Node n=head;
-			for (int i = 0; i < index-1; i++) {
-				n=n.next;
+		} else {
+			Node<T> n = head;
+			for (int i = 0; i < index - 1; i++) {
+				n = n.next;
 			}
-			new_node.next=n.next;
-			n.next=new_node;
+			new_node.next = n.next;
+			n.next = new_node;
 		}
 	}
+
 	public void deleteAtStart() {
-		Node n=head;
-		head=head.next;
-		System.out.println("Node deleted is: "+n.data);
-		n=null;
+		Node<T> n = head;
+		head = head.next;
+		System.out.println("Node deleted is: " + n.data);
+		n = null;
 	}
+
 	public void deleteAt(int index) {
-		if(index==0) {
-			head=head.next;
-		}else {
-			Node n=head;
-			Node n1=null;
-			for (int i = 0; i < index-1; i++) {
-				n=n.next;
+		if (index == 0) {
+			head = head.next;
+		} else {
+			Node<T> n = head;
+			Node<T> n1 = null;
+			for (int i = 0; i < index - 1; i++) {
+				n = n.next;
 			}
-			n1=n.next;
-			n.next=n1.next;
-			System.out.println("Node deleted is: "+n1.data);
-			n1=null;
+			n1 = n.next;
+			n.next = n1.next;
+			System.out.println("Node deleted is: " + n1.data);
+			n1 = null;
 		}
 	}
 
 	public void show() {
-		Node n = head;
+		Node<T> n = head;
 		while (n.next != null) {
 			System.out.println(n.data);
 			n = n.next;
